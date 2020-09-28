@@ -1,25 +1,25 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <img src="./assets/snow.png"/> -->
+    <el-switch
+      v-model="showSnow"
+      active-text="ON"
+      inactive-text="OFF">
+    </el-switch>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+const $ = require('jquery')
+const Snow = require('./plugins/snow')
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      showSnow: true
+    }
+  },
+  mounted () {
+    $('#app').append(new Snow().imgTag)
   }
 }
 </script>
@@ -31,6 +31,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background-color: rgba(0, 0, 0, 0.1);
+  /* margin-top: 60px; */
 }
 </style>
